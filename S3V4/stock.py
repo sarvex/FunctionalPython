@@ -21,9 +21,7 @@ def get_books(filename, raw=False):
   except FileNotFoundError:
     return []
   else:
-    if raw:
-      return data['books']
-    return [Book(**book) for book in data['books']]
+    return data['books'] if raw else [Book(**book) for book in data['books']]
 
 
 BOOKS = get_books('books.json')
@@ -62,7 +60,7 @@ def is_long_book(book):
 
 ### CHAINING ###
 def has_roland(book):
-  return any(["Roland" in subject for subject in book.subjects])
+  return any("Roland" in subject for subject in book.subjects)
 
 
 def titlecase(book):
@@ -97,9 +95,9 @@ def add_book_prices(book1, book2):
 # total = reduce(add_book_prices, [b.price for b in BOOKS])
 
 def long_total(a=None, b=None, books=None):
-  if a is None and b is None and books is None:
-    return None
-  if a is None and b is None and books is not None:
+  if a is None and b is None:
+    if books is None:
+      return None
     a = books.pop(0)
     b = books.pop(0)
     return long_total(a, b, books)
@@ -117,10 +115,7 @@ def long_total(a=None, b=None, books=None):
 # print(long_total(None, None, [b.price for b in BOOKS]))
 
 def factorial(n):
-  if n == 1:
-    return 1
-  else:
-    return n * factorial(n - 1)
+  return 1 if n == 1 else n * factorial(n - 1)
 
 
 # print(factorial(5))

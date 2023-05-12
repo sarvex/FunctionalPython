@@ -22,7 +22,7 @@ def long_func():
     else:
       some_nums[index] = num ** 2
   total = sum(some_nums)
-  print("The total of the numbers is {}".format(total))
+  print(f"The total of the numbers is {total}")
   return some_nums
 
 
@@ -34,4 +34,3 @@ def lot_of_inputs(player_1, player_2, score_1, score_2,
   p1 = player(player_1, score_1)
   p2 = player(player_2, score_2)
   return score(p1, p2)
-  2

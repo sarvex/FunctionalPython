@@ -22,7 +22,7 @@ def long_func():
     else:
       some_nums[index] = num ** 2
   total = sum(some_nums)
-  print("The total of the numbers is {}".format(total))
+  print(f"The total of the numbers is {total}")
   return some_nums
 
 

@@ -21,9 +21,7 @@ def get_books(filename, raw=False):
   except FileNotFoundError:
     return []
   else:
-    if raw:
-      return data['books']
-    return [Book(**book) for book in data['books']]
+    return data['books'] if raw else [Book(**book) for book in data['books']]
 
 
 BOOKS = get_books('books.json')
@@ -62,7 +60,7 @@ def is_long_book(book):
 
 ### CHAINING ###
 def has_roland(book):
-  return any(["Roland" in subject for subject in book.subjects])
+  return any("Roland" in subject for subject in book.subjects)
 
 
 def titlecase(book):
